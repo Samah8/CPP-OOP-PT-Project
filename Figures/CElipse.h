@@ -11,6 +11,8 @@ private:
 public:
 	CElipse(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void DrawMe(GUI* pOut) const;
+	virtual bool InPoint(int x, int y);
+
 };
 
 #endif

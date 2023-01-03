@@ -11,6 +11,8 @@ private:
 public:
 	CCircle(Point, int, GfxInfo FigureGfxInfo);
 	virtual void DrawMe(GUI* pOut) const;
+	virtual bool InPoint(int x, int y);
+
 };
 
 

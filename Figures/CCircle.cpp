@@ -9,7 +9,18 @@ CCircle::CCircle(Point _center, int _reduis, GfxInfo FigureGfxInfo) :CFigure(Fig
 
 
 void CCircle::DrawMe(GUI* pGUI) const
-{
-	//Call Output::DrawRect to draw a Square on the screen	
+{	
 	pGUI->DrawCircle(center, reduis, FigGfxInfo, Selected);
+}
+bool CCircle::InPoint(int x, int y) {
+	//(x - center_x)² + (y - center_y)² < radius².
+	double dx = pow(x - center.x, 2);
+	double dy = pow(y - center.y, 2);
+
+	if (dx + dy < pow(reduis,2))
+	{
+		return true;
+	}
+	return false;
+	
 }

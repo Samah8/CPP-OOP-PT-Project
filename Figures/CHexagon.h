@@ -9,7 +9,7 @@ private:
 	Point TopLeft;
 	int Height, Length;
 public:
-	CHexagon(Point P, int H, int L, GfxInfo FigureGfxInfo);
+	CHexagon(Point P, int H,int L, GfxInfo FigureGfxInfo);
 	virtual bool InPoint(int x, int y);
 	float AreaTriangle(float, float, float, float, float, float);
 	virtual void DrawMe(GUI* pOut) const;

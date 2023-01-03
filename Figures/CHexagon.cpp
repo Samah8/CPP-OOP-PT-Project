@@ -1,6 +1,6 @@
 #include "CHexagon.h"
 
-CHexagon::CHexagon(Point P, int H, int L, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CHexagon::CHexagon(Point P, int H,int L, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeft = P;
 	Length = L;
@@ -38,7 +38,7 @@ bool CHexagon::InPoint(int x, int y)
 	{
 		return true;
 	}
-
+	
 	return false;
 }
 

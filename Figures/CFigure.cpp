@@ -20,4 +20,6 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
-
+bool CFigure::isShapeHiddin() {
+	return isHidden;
+}
