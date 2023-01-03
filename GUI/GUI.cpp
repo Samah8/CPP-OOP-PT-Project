@@ -86,11 +86,11 @@ ActionType GUI::MapInputToActionType() const
 			{
 			case ITM_SQUR: return DRAW_SQUARE;
 			case ITM_ELPS: return DRAW_ELPS;
-			case ITM_CIR:  return DRAW_CIR;
-			case ITM_HEX:  return DRAW_HEX;
-			case ITM_TRG: return DRAW_TRG;
-
-
+			case ITM_RECT: return DRAW_RECT;
+			case ITM_TRI: return DRAW_TRI;
+			case ITM_HEX: return DRAW_HEX;
+			case ITM_CIRC: return DRAW_CIRC;
+			case ITM_SEL: return SELECT;
 			case ITM_EXIT: return EXIT;	
 			
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -154,11 +154,13 @@ void GUI::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.jpg";
+	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.JPG";
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
-	MenuItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Cir.jpg";
-	MenuItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hex.jpg";
-	MenuItemImages[ITM_TRG] = "images\\MenuItems\\Menu_Trg.jpg";
+	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
+	MenuItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Tri.JPG";
+	MenuItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.JPG";
+	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\Menu_Circ.JPG";
+	MenuItemImages[ITM_SEL] = "images\\MenuItems\\Menu_Sel.JPG";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -166,7 +168,7 @@ void GUI::CreateDrawToolBar() const
 	//Draw menu item one image at a time
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth,0,UI.MenuItemWidth, UI.ToolBarHeight);
-
+		
 
 
 	//Draw a line under the toolbar
@@ -241,7 +243,11 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
 
 }
-void GUI::DrawCircle(Point center, int reduis, GfxInfo RectGfxInfo, bool selected) const
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::DrawRectangle(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
@@ -261,56 +267,12 @@ void GUI::DrawCircle(Point center, int reduis, GfxInfo RectGfxInfo, bool selecte
 		style = FRAME;
 
 
-	pWind->DrawCircle(center.x, center.y, reduis, style);
+	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
 }
 
-void GUI::DrawElipse(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
-{
-	color DrawingClr;
-	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else
-		DrawingClr = RectGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
-
-	drawstyle style;
-	if (RectGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(RectGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-
-	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
-}
-void GUI::DrawHexagon(Point TopLeft, int L, int H, GfxInfo RectGfxInfo, bool selected) const
-{
-	color DrawingClr;
-	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else
-		DrawingClr = RectGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
-
-	drawstyle style;
-	if (RectGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(RectGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-	//2.4- Calculate array of points :
-	int px1 = TopLeft.x, px2 = TopLeft.x + L, px3 = TopLeft.x + 1.5 * L, px4 = TopLeft.x + L, px5 = px1, px6 = TopLeft.x - (0.5 * L);
-	int py1 = TopLeft.y, py2 = py1, py3 = TopLeft.y + 0.5 * H, py4 = TopLeft.y + H, py5 = py4, py6 = TopLeft.y + 0.5 * H;
-	int hX[6] = { px1,px2,px3,px4,px5,px6 };
-	int hY[6] = { py1,py2,py3,py4,py5,py6 };
-	pWind->DrawPolygon(hX, hY, 6, style);
-}
+//////////////////////////////////////////////////////////////////////////////////////////
 
 void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
 {
@@ -336,6 +298,79 @@ void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool s
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
+void GUI::DrawHexagon(Point TopLeft, int L, int H, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	//2.4- Calculate array of points :
+	int px1 = TopLeft.x, px2 = TopLeft.x +L, px3 = TopLeft.x + 1.5*L, px4 = TopLeft.x +L, px5 = px1, px6 = TopLeft.x - (0.5 * L);
+	int py1 = TopLeft.y, py2 = py1, py3 = TopLeft.y + 0.5*H, py4 = TopLeft.y + H, py5 = py4, py6 = TopLeft.y + 0.5*H;
+	int hX[6] = { px1,px2,px3,px4,px5,px6 };
+	int hY[6] = { py1,py2,py3,py4,py5,py6 };
+	pWind->DrawPolygon(hX, hY, 6, style);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::DrawCircle(Point center, int reduis, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawCircle(center.x, center.y, reduis, style);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::DrawElipse(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
 GUI::~GUI()
 {
 	delete pWind;
