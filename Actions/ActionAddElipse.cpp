@@ -38,7 +38,7 @@ void ActionAddElipse::Execute()
 
 	pGUI->ClearStatusBar();
 
-	//Step 3 - Create a Square with the parameters read from the user
+	//Step 3 - Create an E with the parameters read from the user
 	CElipse* E = new CElipse(P1, P2, SqrGfxInfo);
 
 	//Step 4 - Add the Square to the list of figures

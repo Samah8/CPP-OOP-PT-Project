@@ -11,7 +11,7 @@ ActionAddTriangle::ActionAddTriangle(ApplicationManager* pApp) :Action(pApp)
 //Execute the action
 void ActionAddTriangle::Execute()
 {
-	Point P1, P2, P3;
+	Point P1,P2,P3;
 
 	//Get a Pointer to the Interface
 	GUI* pGUI = pManager->GetGUI();
@@ -44,12 +44,12 @@ void ActionAddTriangle::Execute()
 
 	//Step 2 - prepare triangle data
 
-	Point Top = P1;
-	Point BotLeft = P2;
-	Point BotRight = P3;
+	Point Top=P1;
+	Point BotLeft=P2;
+	Point BotRight=P3;
 
 	//Step 3 - Create a Triangle with the parameters read from the user
-	CTriangle* R = new CTriangle(Top, BotLeft, BotRight, SqrGfxInfo);
+	CTriangle* R = new CTriangle(Top,BotLeft,BotRight,SqrGfxInfo);
 
 	//Step 4 - Add the Triangle to the list of figures
 	pManager->AddFigure(R);
