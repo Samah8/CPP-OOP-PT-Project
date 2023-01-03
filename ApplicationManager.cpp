@@ -1,9 +1,11 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddSquare.h"
-#include "Actions\ActionAddCircle.h"
-#include "Actions\ActionAddElipse.h"
-#include "Actions\ActionAddHexagon.h"
+#include "Actions\ActionAddRectangle.h"
 #include "Actions\ActionAddTriangle.h"
+#include "Actions\ActionAddHexagon.h"
+#include "Actions\ActionAddElipse.h"
+#include "Actions\ActionAddCircle.h"
+#include "Actions\ActionSelect.h"
 
 
 //Constructor
@@ -55,21 +57,25 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_SQUARE:
 			newAct = new ActionAddSquare(this);
 			break;
-
 		case DRAW_ELPS:
 			newAct = new ActionAddElipse(this);
 			break;
-
+		case DRAW_RECT:
+			newAct = new ActionAddRectangle(this);
 			break;
-		case DRAW_CIR:
-			newAct = new ActionAddCircle(this);
+		case DRAW_TRI:
+			newAct = new ActionAddTriangle(this);
 			break;
 		case DRAW_HEX:
 			newAct = new ActionAddHexagon(this);
 			break;
-		case DRAW_TRG:
-			newAct = new ActionAddTriangle(this);
+		case DRAW_CIRC:
+			newAct = new ActionAddCircle(this);
 			break;
+		case SELECT:
+			newAct = new ActionSelect(this);
+			break;
+
 
 		case EXIT:
 			///create ExitAction here
@@ -109,10 +115,13 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
-
-
-	///Add your code here to search for a figure given a point x,y	
-
+	for (int i = FigCount - 1; i >= 0; i--)
+	{
+		if (FigList[i]->InPoint(x, y))
+		{
+			return FigList[i];
+		}
+	}
 	return NULL;
 }
 //==================================================================================//
