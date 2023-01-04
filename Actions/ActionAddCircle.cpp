@@ -33,7 +33,7 @@ void ActionAddCircle::Execute()
 	pGUI->PrintMessage("New Circle: Click at second point");
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P2.x, P2.y);
-
+	
 	pGUI->ClearStatusBar();
 	Point center;
 	center.x = P1.x;
@@ -45,7 +45,15 @@ void ActionAddCircle::Execute()
 
 	//Step 3 - Create a Square with the parameters read from the user
 	CCircle* C = new CCircle(center, reduis, SqrGfxInfo);
-
+	if (P1.y >= UI.ToolBarHeight && P1.y < UI.height - UI.StatusBarHeight && P2.y >= UI.ToolBarHeight && P2.y < UI.height - UI.StatusBarHeight)
+	{
+		
+		pManager->AddFigure(C);
+	}
+	else
+	{
+		pGUI->PrintMessage("Shape is Out of Drawing Area Boundry");
+	}
 	//Step 4 - Add the Square to the list of figures
-	pManager->AddFigure(C);
+	
 }

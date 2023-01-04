@@ -1,11 +1,14 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddSquare.h"
-#include "Actions\ActionAddRectangle.h"
 #include "Actions\ActionAddTriangle.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionAddElipse.h"
 #include "Actions\ActionAddCircle.h"
 #include "Actions\ActionSelect.h"
+#include "Actions\ActionChangeDrawColor.h"
+#include "Actions\ActionChangeFillColor.h"
+#include "Actions\ActionDelete.h"
+
 
 
 //Constructor
@@ -60,9 +63,6 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_ELPS:
 			newAct = new ActionAddElipse(this);
 			break;
-		case DRAW_RECT:
-			newAct = new ActionAddRectangle(this);
-			break;
 		case DRAW_TRI:
 			newAct = new ActionAddTriangle(this);
 			break;
@@ -72,10 +72,18 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case DRAW_CIRC:
 			newAct = new ActionAddCircle(this);
 			break;
-		case SELECT:
+		case CHNG_DRAW_CLR:
+			newAct = new ActionChangeDrawColor(this);
+			break;
+		case CHNG_FILL_CLR:
+			newAct = new ActionChangeFillColor(this);
+			break;
+		case SELECTED:
 			newAct = new ActionSelect(this);
 			break;
-
+		case DEL:
+			newAct = new ActionDelete(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
@@ -124,6 +132,24 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	}
 	return NULL;
 }
+CFigure* ApplicationManager::FigureSelected() const
+{
+	//If a figure is found return a pointer to it.
+	//if this point (x,y) does not belong to any figure return NULL
+
+	///Add your code here to search for a figure given a point x,y	
+	for (int i = FigCount - 1; i >= 0; i--)
+		if (FigList[i]->IsSelected())
+			return FigList[i];
+	return NULL;
+}
+CFigure** ApplicationManager::getFigureList()
+{
+	return FigList;
+}
+int* ApplicationManager::getFigCount() {
+	return &FigCount;
+};
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

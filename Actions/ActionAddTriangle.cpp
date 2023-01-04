@@ -51,6 +51,14 @@ void ActionAddTriangle::Execute()
 	//Step 3 - Create a Triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(Top,BotLeft,BotRight,SqrGfxInfo);
 
+	if (P1.y >= UI.ToolBarHeight && P1.y < UI.height - UI.StatusBarHeight && P2.y >= UI.ToolBarHeight && P2.y < UI.height - UI.StatusBarHeight && P3.y >= UI.ToolBarHeight && P3.y < UI.height - UI.StatusBarHeight)
+	{
+
+		pManager->AddFigure(R);
+	}
+	else
+	{
+		pGUI->PrintMessage("Shape is Out of Drawing Area Boundry");
+	}
 	//Step 4 - Add the Triangle to the list of figures
-	pManager->AddFigure(R);
 }

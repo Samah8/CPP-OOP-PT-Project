@@ -1,27 +1,40 @@
 #include "ActionSelect.h"
-#include "../GUI/GUI.h"
-#include "../ApplicationManager.h"
 
-ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp) {}
+#include "..\ApplicationManager.h"
 
-void ActionSelect::Execute() {
-	Point point;
+#include "..\GUI\GUI.h"
 
+ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
+{}
 
+//Execute the action
+void ActionSelect::Execute()
+{
+	Point P1;
 	GUI* pGUI = pManager->GetGUI();
+	pGUI->PrintMessage("Click again");
 
+	pGUI->GetPointClicked(P1.x, P1.y);
 
-	pGUI->PrintMessage("Select Action");
-	pGUI->GetPointClicked(point.x, point.y);
+	CFigure* fig = pManager->GetFigure(P1.x, P1.y);
+	
+	if (fig != NULL)
+	{
+		if (!fig->IsSelected())
+		{
+			fig->SetSelected(true);
+			fig->ChngDrawClr(GREEN);
+		}
+		else
+		{
+			fig->SetSelected(false);
+			fig->ChngDrawClr(BLUE);
+		}
+
+	}
+
 
 
 	pGUI->ClearStatusBar();
-
-	CFigure* fig = pManager->GetFigure(point.x, point.y);
-
-	if (fig) {
-		pGUI->PrintMessage("Hexagon Selected");
-		fig->SetSelected(!fig->IsSelected());
-	}
 
 }

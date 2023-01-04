@@ -142,12 +142,6 @@
     <ClCompile Include="Actions\ActionAddSquare.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ActionAddRectangle.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Figures\CRectangle.cpp">
-      <Filter>Figures Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\ActionAddTriangle.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -174,6 +168,15 @@
     </ClCompile>
     <ClCompile Include="Figures\CElipse.cpp">
       <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionChangeDrawColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionChangeFillColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionDelete.cpp">
+      <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,12 +262,6 @@
     <ClInclude Include="Actions\ActionAddSquare.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ActionAddRectangle.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Figures\CRectangle.h">
-      <Filter>Figures Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\ActionAddTriangle.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -291,6 +288,15 @@
     </ClInclude>
     <ClInclude Include="Figures\CElipse.h">
       <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionChangeDrawColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionChangeFillColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionDelete.h">
+      <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

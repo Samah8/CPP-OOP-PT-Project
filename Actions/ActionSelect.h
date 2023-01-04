@@ -1,11 +1,12 @@
-#pragma once
-#include "Action.h"
+#ifndef ACTION_SELECT_H
+#define ACTION_SELECT_H
 
-class ActionSelect :public Action
+#include "Action.h"
+class ActionSelect : public Action
 {
 public:
-    ActionSelect(ApplicationManager* pApp);
+	ActionSelect(ApplicationManager* pApp);
 
-    void Execute();
+	virtual void Execute();
 };
-
+#endif

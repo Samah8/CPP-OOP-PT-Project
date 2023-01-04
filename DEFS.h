@@ -7,15 +7,19 @@
 enum ActionType //The actions supported (you can add more if needed)
 {
 	DRAW_SQUARE,	//Draw a Square
-	DRAW_ELPS,		//Draw an Ellipse
-	DRAW_RECT,		//Draw a Rectangle
+	DRAW_ELPS,		//Draw an Ellipse		//Draw a Rectangle
 	DRAW_TRI,	    //Draw a Triangle
 	DRAW_HEX,	    //Draw a Hexagon
+	BLUE_CL,
+	RED_CL,
+	YELLOW_CL,
+	GREEN_CL,
 	DRAW_CIRC,	    //Draw a Circle
-	SELECT,			//Select shape
+	SELECTED,			//Select shape
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color
+	COLOR,
 	DEL,			//Delete a figure(s)
 	MOVE,			//Move a figure(s)
 	RESIZE,			//Resize a figure(s)

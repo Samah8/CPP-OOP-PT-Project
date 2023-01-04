@@ -26,15 +26,16 @@ public:
 
 	/////////// Output Functoinality  ////////////////
 	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
+	void CreateColorToolBar() const;
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
+	void ClearToolBar() const;
 	
 	// -- Figures Drawing functions
 	void DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected=false) const;  //Draw a Square
-	void DrawRectangle(Point P1,Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Rectangle
 	void DrawTriangle(Point P1, Point P2,Point P3, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Triangle
 	void DrawHexagon(Point TopLeft, int L, int H, GfxInfo RectGfxInfo, bool selected) const; //Draw a Hexagon
 	void DrawCircle(Point center, int reduis, GfxInfo RectGfxInfo, bool selected) const; //Draw a Circle

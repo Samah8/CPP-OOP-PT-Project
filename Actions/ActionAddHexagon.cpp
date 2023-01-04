@@ -49,5 +49,13 @@ void ActionAddHexagon::Execute()
 	CHexagon* R = new CHexagon(TopLeft,H,L, SqrGfxInfo);
 
 	//Step 3 - Add the Square to the list of figures
-	pManager->AddFigure(R);
+	if (P1.y >= UI.ToolBarHeight && P1.y < UI.height - UI.StatusBarHeight && P2.y >= UI.ToolBarHeight && P2.y < UI.height - UI.StatusBarHeight)
+	{
+
+		pManager->AddFigure(R);
+	}
+	else
+	{
+		pGUI->PrintMessage("Shape is Out of Drawing Area Boundry");
+	}
 }
