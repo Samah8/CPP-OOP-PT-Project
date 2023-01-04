@@ -1,5 +1,6 @@
 #include "CElipse.h"
-
+#include <cmath>
+#include <sstream>
 CElipse::CElipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	firstPoint = P1;
@@ -26,4 +27,10 @@ bool CElipse::InPoint(int x, int y) {
 		return true;
 	}
 	return false;
+}
+void CElipse::PrintMe(GUI* pGUI)
+{
+	stringstream properties;
+	properties << "Second Point: " << "(" << secondPoint.x << "," << secondPoint.y << ")" << "First Point: " << " (" << firstPoint.x << "," << firstPoint.y << ")" << "Area: " << 3.14 * a * b;
+	pGUI->PrintMessage(properties.str());
 }

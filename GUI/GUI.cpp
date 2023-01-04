@@ -86,7 +86,6 @@ ActionType GUI::MapInputToActionType() const
 			{
 			case ITM_SQUR: return DRAW_SQUARE;
 			case ITM_ELPS: return DRAW_ELPS;
-			case ITM_RECT: return DRAW_RECT;
 			case ITM_TRI: return DRAW_TRI;
 			case ITM_HEX: return DRAW_HEX;
 			case ITM_CIRC: return DRAW_CIRC;
@@ -156,7 +155,6 @@ void GUI::CreateDrawToolBar() const
 	string MenuItemImages[DRAW_ITM_COUNT];
 	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.JPG";
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
 	MenuItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Tri.JPG";
 	MenuItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.JPG";
 	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\Menu_Circ.JPG";
@@ -241,33 +239,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
 	pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-void GUI::DrawRectangle(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
-{
-	color DrawingClr;
-	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else
-		DrawingClr = RectGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
-
-	drawstyle style;
-	if (RectGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(RectGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-
-
-	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
 }
 

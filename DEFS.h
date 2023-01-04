@@ -8,7 +8,6 @@ enum ActionType //The actions supported (you can add more if needed)
 {
 	DRAW_SQUARE,	//Draw a Square
 	DRAW_ELPS,		//Draw an Ellipse
-	DRAW_RECT,		//Draw a Rectangle
 	DRAW_TRI,	    //Draw a Triangle
 	DRAW_HEX,	    //Draw a Hexagon
 	DRAW_CIRC,	    //Draw a Circle

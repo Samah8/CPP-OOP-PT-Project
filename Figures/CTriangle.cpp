@@ -1,5 +1,6 @@
 #include "CTriangle.h"
-
+#include <cmath>
+#include <sstream>
 CTriangle::CTriangle(Point P1, Point P2,Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Top = P1;
@@ -37,4 +38,10 @@ bool CTriangle::InPoint(int x, int y)
 float CTriangle::AreaTriangle(float x1, float y1, float x2, float y2, float x3, float y3)
 {
 	return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) * 0.5);
+}
+void CTriangle::PrintMe(GUI* pGUI)
+{
+	stringstream properties;
+	properties << "Top Points: " << "(" << Top.x << "," << Top.y << ")" << "Bot Right Points: " << " (" << BotRight.x << "," << BotRight.y << ")" << "Bot Left Points: " << " (" << BotLeft.x << "," << BotLeft.y << ")" << "Area: " << 0.5 * abs(Top.x * (BotRight.y - BotLeft.y) + BotLeft.x * (BotLeft.y - Top.y) + BotRight.x * (Top.y - BotRight.y));
+	pGUI->PrintMessage(properties.str());
 }

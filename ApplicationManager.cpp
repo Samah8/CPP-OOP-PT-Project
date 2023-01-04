@@ -1,6 +1,5 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddSquare.h"
-#include "Actions\ActionAddRectangle.h"
 #include "Actions\ActionAddTriangle.h"
 #include "Actions\ActionAddHexagon.h"
 #include "Actions\ActionAddElipse.h"
@@ -59,9 +58,6 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case DRAW_ELPS:
 			newAct = new ActionAddElipse(this);
-			break;
-		case DRAW_RECT:
-			newAct = new ActionAddRectangle(this);
 			break;
 		case DRAW_TRI:
 			newAct = new ActionAddTriangle(this);

@@ -1,5 +1,6 @@
 #include "CHexagon.h"
-
+#include <cmath>
+#include <sstream>
 CHexagon::CHexagon(Point P, int H,int L, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeft = P;
@@ -45,4 +46,10 @@ bool CHexagon::InPoint(int x, int y)
 float CHexagon::AreaTriangle(float x1, float y1, float x2, float y2, float x3, float y3)
 {
 	return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) * 0.5);
+}
+void CHexagon::PrintMe(GUI* pGUI)
+{
+	stringstream properties;
+	properties << "Points: " << "(" << TopLeft.x << "," << TopLeft.y << ")" << "Area: " << 3 * sqrt(3) * pow(Length, 2) / 3;
+	pGUI->PrintMessage(properties.str());
 }

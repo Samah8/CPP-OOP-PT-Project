@@ -20,8 +20,14 @@ void ActionSelect::Execute() {
 	CFigure* fig = pManager->GetFigure(point.x, point.y);
 
 	if (fig) {
-		pGUI->PrintMessage("Hexagon Selected");
+		pGUI->PrintMessage("Fig unselected");
 		fig->SetSelected(!fig->IsSelected());
+		if (fig->IsSelected())
+		{
+			fig->PrintMe(pGUI);
+		}
 	}
+
+
 
 }

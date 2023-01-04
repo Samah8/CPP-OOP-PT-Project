@@ -4,6 +4,7 @@
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 
+
 class Action;	//Forward Declaration
 
 

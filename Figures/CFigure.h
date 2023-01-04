@@ -25,6 +25,7 @@ public:
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	bool isShapeHiddin();
 	virtual bool InPoint(int x, int y)=0;
+	virtual void PrintMe(GUI* pGUI) = 0;
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

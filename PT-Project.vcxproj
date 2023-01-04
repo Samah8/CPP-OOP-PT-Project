@@ -132,7 +132,6 @@
     <ClCompile Include="Actions\ActionAddCircle.cpp" />
     <ClCompile Include="Actions\ActionAddElipse.cpp" />
     <ClCompile Include="Actions\ActionAddHexagon.cpp" />
-    <ClCompile Include="Actions\ActionAddRectangle.cpp" />
     <ClCompile Include="Actions\ActionAddTriangle.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -174,7 +173,6 @@
     <ClCompile Include="Figures\CElipse.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CHexagon.cpp" />
-    <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Figures\CSquare.cpp" />
     <ClCompile Include="Actions\ActionAddSquare.cpp" />
     <ClCompile Include="Figures\CTriangle.cpp" />
@@ -186,7 +184,6 @@
     <ClInclude Include="Actions\ActionAddCircle.h" />
     <ClInclude Include="Actions\ActionAddElipse.h" />
     <ClInclude Include="Actions\ActionAddHexagon.h" />
-    <ClInclude Include="Actions\ActionAddRectangle.h" />
     <ClInclude Include="Actions\ActionAddTriangle.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -213,7 +210,6 @@
     <ClInclude Include="Figures\CElipse.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CHexagon.h" />
-    <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Figures\CSquare.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddSquare.h" />
