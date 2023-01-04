@@ -36,5 +36,15 @@ void ActionSelect::Execute()
 
 
 	pGUI->ClearStatusBar();
+	if (fig) {
+		pGUI->PrintMessage("Fig unselected");
+		fig->SetSelected(!fig->IsSelected());
+		if (fig->IsSelected())
+		{
+			fig->PrintMe(pGUI);
+		}
+	}
+
+
 
 }

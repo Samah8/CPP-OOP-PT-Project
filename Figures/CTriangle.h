@@ -12,6 +12,8 @@ public:
 	virtual void DrawMe(GUI* pOut) const;
 	virtual bool InPoint(int x, int y);
 	float AreaTriangle(float, float, float, float, float, float);
+	void PrintMe(GUI* pGUI);
+
 };
 
 #endif
