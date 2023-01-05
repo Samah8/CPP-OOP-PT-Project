@@ -19,7 +19,6 @@ void ActionChangeFillColor::Execute()
 		if (FigsList[i]->IsSelected())
 		{
 			pGUI->ClearToolBar();
-			UI.InterfaceMode == MODE_COLOR;
 			pGUI->CreateColorToolBar();
 			pGUI->PrintMessage("Pick color from platte");
 			pGUI->GetPointClicked(P1.x, P1.y);
@@ -27,13 +26,11 @@ void ActionChangeFillColor::Execute()
 			{
 				if (FigsList[i]->IsSelected())
 				{
-					
 					FigsList[i]->SetSelected(false);
-					FigsList[i]->ChngFillClr(pGUI->pWind->GetColor(P1.x, P1.y));
+					FigsList[i]->ChngFillClr(pGUI->pWind->GetColor(P1.x, P1.y));	
 				}
 			}
 			pGUI->ClearToolBar();
-			UI.InterfaceMode == MODE_DRAW;
 			pGUI->CreateDrawToolBar();
 			break;
 		}

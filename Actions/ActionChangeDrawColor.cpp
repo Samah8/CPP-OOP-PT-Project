@@ -28,9 +28,9 @@ void ActionChangeDrawColor::Execute()
 					{
 						FigsList[i]->SetSelected(false);
 						FigsList[i]->ChngDrawClr(pGUI->pWind->GetColor(P1.x, P1.y));
-						UI.DrawColor = pGUI->pWind->GetColor(P1.x, P1.y);
 					}
 				}
+				UI.DrawColor = pGUI->pWind->GetColor(P1.x, P1.y);
 				pGUI->ClearToolBar();
 				pGUI->CreateDrawToolBar();
 			break; 

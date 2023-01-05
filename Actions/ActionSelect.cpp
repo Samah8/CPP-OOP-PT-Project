@@ -23,28 +23,12 @@ void ActionSelect::Execute()
 		if (!fig->IsSelected())
 		{
 			fig->SetSelected(true);
-			fig->ChngDrawClr(GREEN);
+			fig->PrintMe(pGUI);
 		}
 		else
 		{
 			fig->SetSelected(false);
-			fig->ChngDrawClr(BLUE);
 		}
 
 	}
-
-
-
-	pGUI->ClearStatusBar();
-	if (fig) {
-		pGUI->PrintMessage("Fig unselected");
-		fig->SetSelected(!fig->IsSelected());
-		if (fig->IsSelected())
-		{
-			fig->PrintMe(pGUI);
-		}
-	}
-
-
-
 }
